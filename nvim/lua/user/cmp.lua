@@ -37,6 +37,11 @@ local kind_icons = {
   TypeParameter = "",
 }
 
+luasnip.config.set_config({
+    region_check_events = 'InsertEnter',
+    delete_check_events = 'InsertLeave'
+})
+
 cmp.setup {
     snippet = {
         expand = function(args)
@@ -56,14 +61,25 @@ cmp.setup {
     },
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
-    ["<CR>"] = cmp.mapping.confirm { select = false },
+    ["<CR>"] = cmp.mapping(function (fallback)
+        if cmp.visible() then
+            cmp.confirm({select = false})
+            if luasnip.jumpable(1) then
+                luasnip.jump(1)
+            end
+        elseif luasnip.jumpable(1) then
+            luasnip.jump(1)
+        else
+            fallback()
+        end
+    end, {"i", "s"}),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expandable() then
         luasnip.expand()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
+      elseif luasnip.jumpable(1) then
+        luasnip.jump(1)
       elseif check_backspace() then
         fallback()
       else
@@ -119,3 +135,4 @@ cmp.setup {
     native_menu = false,
   },
 }
+

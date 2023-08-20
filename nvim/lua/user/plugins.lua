@@ -29,4 +29,11 @@ return packer.startup(function(use)
         tag = 'v0.7.2',
         run = ':TSUpdate'
     }
+    -- comment/uncomment
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
 end)

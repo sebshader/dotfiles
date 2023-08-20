@@ -98,8 +98,8 @@ require('mason-lspconfig').setup_handlers({
             capabilities = lsp_capabilities
         })
     end,
-    ["sumneko_lua"] = function()
-        lspconfig.sumneko_lua.setup {
+    ["lua_ls"] = function()
+        lspconfig.lua_ls.setup {
             on_attach = lsp_attach,
             capabilities = lsp_capabilities,
             cmd = { "lua-language-server" },
@@ -110,6 +110,16 @@ require('mason-lspconfig').setup_handlers({
                     }
                 }
             }
+        }
+    end,
+    ['jdtls'] = function()
+        lspconfig.jdtls.setup {
+            cmd = {
+                "jdtls",
+                "--jvm-arg=-javaagent:/home/useb/.m2/repository/org/projectlombok/lombok/1.18.26/lombok-1.18.26.jar"
+            },
+            capabilities = lsp_capabilities,
+            on_attach = lsp_attach
         }
     end
 })
