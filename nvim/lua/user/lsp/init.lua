@@ -112,6 +112,17 @@ require('mason-lspconfig').setup_handlers({
             }
         }
     end,
+    ['tsserver'] = function ()
+        lspconfig.tsserver.setup {
+            on_attach = lsp_attach,
+            capabilities = lsp_capabilities,
+            settings = {
+                completions = {
+                    completeFunctionCalls = true
+                }
+            }
+        }
+    end,
     ['jdtls'] = function()
         lspconfig.jdtls.setup {
             cmd = {
