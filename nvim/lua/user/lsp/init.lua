@@ -127,7 +127,7 @@ require('mason-lspconfig').setup_handlers({
         lspconfig.jdtls.setup {
             cmd = {
                 "jdtls",
-                "--jvm-arg=-javaagent:/home/useb/.m2/repository/org/projectlombok/lombok/1.18.26/lombok-1.18.26.jar"
+                "--jvm-arg=" .. string.format("-javaagent:%s", vim.fn.expand "$MASON/share/jdtls/lombok.jar"),
             },
             capabilities = lsp_capabilities,
             on_attach = lsp_attach
