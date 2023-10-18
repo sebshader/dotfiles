@@ -11,3 +11,5 @@ vim.opt.expandtab = true
 vim.opt.signcolumn = 'yes'
 vim.opt.showmode = false
 vim.opt.scrolloff = 5
+vim.opt.colorcolumn = "81"
+vim.opt.list = true

@@ -62,8 +62,8 @@ cmp.setup {
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
     ["<CR>"] = cmp.mapping(function (fallback)
-        if cmp.visible() then
-            cmp.confirm({select = false})
+        if cmp.visible() and cmp.get_active_entry() then
+            cmp.confirm({behavior = cmp.ConfirmBehavior.Replace, select = false})
             if luasnip.jumpable(1) then
                 luasnip.jump(1)
             end

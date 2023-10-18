@@ -16,6 +16,20 @@ keymap('n', "<C-j>", "<C-w>j", opts)
 keymap('n', "<C-k>", "<C-w>k", opts)
 keymap('n', "<C-l>", "<C-w>l", opts)
 
+-- center screen when navigating
+--[[ keymap('n', "<C-u>", "<C-u>zz", opts)
+keymap('n', "<C-d>", "<C-d>zz", opts) ]]--
+
+-- move lines around
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- append below line to current
+vim.keymap.set("n", "J", "mzJ`z")
+
+-- greatest remap ever
+keymap('x', "<leader>p", "\"_dP", opts)
+
 --Resize with arrows
 keymap('n', "<C-Up>", ":resize +2<CR>", opts)
 keymap('n', "<C-Down>", ":resize -2<CR>", opts)
@@ -28,3 +42,9 @@ vim.keymap.set({'i', 's'}, 'jk', "<ESC>", opts)
 -- Navigate buffers
 keymap('n', "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
+
+-- fugitive
+keymap("n", "<leader>gs", ":Git<CR>", opts)
+
+-- replace current word
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

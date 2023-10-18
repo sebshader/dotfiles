@@ -36,4 +36,23 @@ return packer.startup(function(use)
             require('Comment').setup()
         end
     }
+    -- fuzzy finder
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.4',
+    -- or                            , branch = '0.1.x',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
+    -- git
+    use('tpope/vim-fugitive')
+    use('chentoast/marks.nvim')
+    -- autopairs
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
+    use('tpope/vim-surround')
+    use {
+        "windwp/nvim-ts-autotag",
+        config =  function() require("nvim-ts-autotag").setup {} end
+    }
 end)
