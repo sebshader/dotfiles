@@ -13,3 +13,4 @@ vim.opt.showmode = false
 vim.opt.scrolloff = 5
 vim.opt.colorcolumn = "81"
 vim.opt.list = true
+vim.cmd.syntax("off")

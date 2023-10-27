@@ -87,6 +87,7 @@ end
 local lsp_attach = function(client, bufnr)
     -- Create your keybindings here...
     lsp_keymaps(bufnr)
+    --client.server_capabilities.semanticTokensProvider = nil
     lsp_highlight_document(client)
 end
 

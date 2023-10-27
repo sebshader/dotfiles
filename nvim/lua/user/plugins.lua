@@ -26,7 +26,6 @@ return packer.startup(function(use)
     -- treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
-        tag = 'v0.7.2',
         run = ':TSUpdate'
     }
     -- comment/uncomment
