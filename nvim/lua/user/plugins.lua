@@ -1,5 +1,7 @@
 local packer = require('packer')
 
+vim.cmd.packadd("cfilter")
+
 --plugins
 return packer.startup(function(use)
     use 'wbthomason/packer.nvim' --packer
