@@ -3,7 +3,7 @@
 
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
 
-#(& opam env) -split '\r?\n' | ForEach-Object { Invoke-Expression $_ }
+(& opam env) -split '\r?\n' | ForEach-Object { Invoke-Expression $_ }
 
 function OnViModeChange {
     if ($args[0] -eq 'Command') {
@@ -45,3 +45,10 @@ function prompt {
 }
 
 Set-Alias -Name vim nvim
+function which ([string]$command) {
+    Try {
+        Get-Command -Name $command -ErrorAction Stop
+    } Catch {
+        "No Command found"
+    }
+}
