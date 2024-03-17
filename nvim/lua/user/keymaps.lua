@@ -50,4 +50,4 @@ keymap("n", "<leader>gs", ":Git<CR>", opts)
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- fast buffer list
-keymap("n", "<A-b>", ":ls<CR>:", opts)
+keymap("n", "<A-b>", ":bro ls<CR>", opts)
