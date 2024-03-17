@@ -10,3 +10,9 @@ require('extern.nvim-base16.lua.base16-colorscheme').setup({
 })
 vim.api.nvim_set_hl(0, 'SignColumn', {})
 vim.api.nvim_set_hl(0, 'NormalFloat', {})
+
+vim.api.nvim_create_autocmd({"TextYankPost"}, {
+    callback = function (_)
+        vim.highlight.on_yank()
+    end
+})
