@@ -8,6 +8,9 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+keymap('n', "<leader>t", ":tabn<SPACE>", {noremap = true, silent = false})
+keymap('n', "<A-l>", ":tabn<CR>", opts)
+keymap('n', "<A-h>", ":tabp<CR>", opts)
 keymap('n', "<leader>e", ":Lex 30<cr>", opts)
 
 -- window navigation shortcuts
