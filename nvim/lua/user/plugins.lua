@@ -25,39 +25,6 @@ return packer.startup(function(use)
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
 
-    --oil
-    use {
-        "stevearc/oil.nvim",
-        requires = { 'nvim-tree/nvim-web-devicons'},
-        config = function()
-            local oilVal = require("oil")
-            oilVal.setup({
-                columns = {
-                    "size",
-                    "permissions",
-                    "icon",
-                    "mtime"
-                },
-                view_options = {
-                    -- Show files and directories that start with "."
-                    show_hidden = true
-                },
-                -- Window-local options to use for oil buffers
-                win_options = {
-                    wrap = false,
-                    signcolumn = "yes",
-                    cursorcolumn = false,
-                    foldcolumn = "0",
-                    spell = false,
-                    list = false,
-                    conceallevel = 3,
-                    concealcursor = "nvic",
-                    winbar = "%{v:lua.require('oil').get_current_dir()}"
-                }
-            })
-        end,
-    }
-
     -- snippets
     use 'L3MON4D3/LuaSnip' --snippet engine
     use 'rafamadriz/friendly-snippets' -- included snippets
@@ -91,4 +58,43 @@ return packer.startup(function(use)
         "windwp/nvim-ts-autotag",
         config =  function() require("nvim-ts-autotag").setup {} end
     }
+
+    --oil
+    use {
+        "stevearc/oil.nvim",
+        requires = { 'nvim-tree/nvim-web-devicons'},
+        config = function()
+            local tbl = require("oil")
+            tbl.setup({
+                columns = {
+                    "size",
+                    "permissions",
+                    "icon",
+                    "mtime"
+                },
+                view_options = {
+                    -- Show files and directories that start with "."
+                    show_hidden = true
+                },
+                -- Window-local options to use for oil buffers
+                win_options = {
+                    wrap = false,
+                    signcolumn = "yes",
+                    cursorcolumn = false,
+                    foldcolumn = "0",
+                    spell = false,
+                    list = false,
+                    conceallevel = 3,
+                    concealcursor = "nvic",
+                    winbar = "%{v:lua.require('oil').get_current_dir()}"
+                },
+                keymaps = {
+                    vim.keymap.set('n', '<leader>pf', function()
+                        require('telescope.builtin').find_files{cwd = tbl.get_current_dir()}
+                    end)
+                }
+            })
+        end
+    }
+
 end)
