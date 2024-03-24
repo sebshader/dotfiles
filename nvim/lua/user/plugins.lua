@@ -16,10 +16,46 @@ return packer.startup(function(use)
     use 'neovim/nvim-lspconfig' -- enable LSP
     use 'hrsh7th/cmp-nvim-lsp' -- lsp completion
     use 'saadparwaiz1/cmp_luasnip' --luasnip completion
+
+    use 'nvim-tree/nvim-web-devicons' --devicons
+
     -- lualine
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
+
+    --oil
+    use {
+        "stevearc/oil.nvim",
+        requires = { 'nvim-tree/nvim-web-devicons'},
+        config = function()
+            local oilVal = require("oil")
+            oilVal.setup({
+                columns = {
+                    "size",
+                    "permissions",
+                    "icon",
+                    "mtime"
+                },
+                view_options = {
+                    -- Show files and directories that start with "."
+                    show_hidden = true
+                },
+                -- Window-local options to use for oil buffers
+                win_options = {
+                    wrap = false,
+                    signcolumn = "yes",
+                    cursorcolumn = false,
+                    foldcolumn = "0",
+                    spell = false,
+                    list = false,
+                    conceallevel = 3,
+                    concealcursor = "nvic",
+                    winbar = "%{v:lua.require('oil').get_current_dir()}"
+                }
+            })
+        end,
     }
 
     -- snippets
@@ -27,8 +63,7 @@ return packer.startup(function(use)
     use 'rafamadriz/friendly-snippets' -- included snippets
     -- treesitter
     use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
+        'nvim-treesitter/nvim-treesitter'
     }
     -- comment/uncomment
     use {

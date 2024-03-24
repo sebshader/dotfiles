@@ -11,7 +11,6 @@ vim.g.maplocalleader = " "
 keymap('n', "<leader>t", ":tabn<SPACE>", {noremap = true, silent = false})
 keymap('n', "<A-l>", ":tabn<CR>", opts)
 keymap('n', "<A-h>", ":tabp<CR>", opts)
-keymap('n', "<leader>e", ":Ex<cr>", opts)
 
 -- window navigation shortcuts
 keymap('n', "<C-h>", "<C-w>h", opts)
@@ -49,13 +48,9 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 -- fugitive
 keymap("n", "<leader>gs", ":Git<CR>", opts)
 
+-- oil
+keymap('n', '-', "<CMD>Oil<CR>", opts)
+
 -- replace current word
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
-vim.api.nvim_create_autocmd({"FileType"}, {
-    pattern = "netrw",
-    callback = function (_)
-        vim.api.nvim_buf_set_keymap(0, 'n', "<leader>e", ":bd<CR>", opts)
-        vim.opt_local.bufhidden = "delete"
-    end
-})
