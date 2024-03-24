@@ -18,9 +18,9 @@ vim.o.list = true
 vim.o.grepprg = "rg --vimgrep --no-heading --smart-case -j 1"
 vim.opt.grepformat:append("%f:%l:%c:%m")
 
-vim.o.foldmethod = 'expr'
-vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.o.foldenable = false
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.wo.foldenable = false
 
 if(vim.fn.has('win32')) then
     vim.o.shell = (vim.fn.executable('pwsh') > 0) and 'pwsh' or 'powershell'
