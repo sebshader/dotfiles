@@ -22,6 +22,11 @@ vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.wo.foldenable = false
 
+vim.g.netrw_liststyle = 1
+vim.g.netrw_keepdir = 1
+vim.g.netrw_bufsettings = "noma nomod nu rnu nowrap ro nobl"
+vim.g.netrw_fastbrowse = 0
+
 if(vim.fn.has('win32')) then
     vim.o.shell = (vim.fn.executable('pwsh') > 0) and 'pwsh' or 'powershell'
     vim.o.shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[\'Out-File:Encoding\']=\'utf8\';'
