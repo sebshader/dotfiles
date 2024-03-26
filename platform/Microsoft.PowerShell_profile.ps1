@@ -57,3 +57,7 @@ Remove-Alias -Name ls
 function ls () {
     Get-ChildItem -Force @args
 }
+
+function vimdiff () {
+    vim -d @args
+}
