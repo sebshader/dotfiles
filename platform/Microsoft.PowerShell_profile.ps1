@@ -52,3 +52,8 @@ function which ([string]$command) {
         "No Command found"
     }
 }
+
+Remove-Alias -Name ls
+function ls () {
+    Get-ChildItem -Force @args
+}
