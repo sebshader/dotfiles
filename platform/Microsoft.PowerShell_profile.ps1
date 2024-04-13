@@ -1,8 +1,4 @@
 
-# Shows navigable menu of all options when hitting Tab
-
-Set-PSReadlineKeyHandler -Key Tab -Function Complete
-
 (& opam env) -split '\r?\n' | ForEach-Object { Invoke-Expression $_ }
 
 function OnViModeChange {
@@ -24,6 +20,7 @@ Set-PSReadLineKeyHandler -Key j -ViMode Insert -ScriptBlock {
     $j_timer.Restart()
 }
 
+
 Set-PSReadLineKeyHandler -Key k -ViMode Insert -ScriptBlock {
     if (!$j_timer.IsRunning -or $j_timer.ElapsedMilliseconds -gt 500) {
         [Microsoft.PowerShell.PSConsoleReadLine]::Insert("k")
@@ -43,6 +40,10 @@ function prompt {
     # things like vim/nvim can mess the cursor up
     Write-Host -NoNewLine "`e[5 q"
 }
+
+# Shows navigable menu of all options when hitting Tab
+
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
 Set-Alias -Name vim nvim
 function which ([string]$command) {
