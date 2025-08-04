@@ -4,7 +4,7 @@ vim.cmd.packadd("cfilter")
 --plugins
 return {
     { 'williamboman/mason.nvim', opts = {}}, --mason (lsps)
-    'williamboman/mason-lspconfig.nvim', -- lspconfig for mason (lsps)
+    -- 'williamboman/mason-lspconfig.nvim', -- lspconfig for mason (lsps)
     {"nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate"},
     'nvim-lua/popup.nvim', --popup api
     'nvim-lua/plenary.nvim', --lua functions for vim
