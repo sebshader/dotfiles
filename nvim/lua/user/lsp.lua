@@ -85,7 +85,7 @@ local lsp_attach = function(client, bufnr)
     lsp_keymaps(bufnr)
     --client.server_capabilities.semanticTokensProvider = nil
     lsp_highlight_document(client)
-    vim.lsp.completion.enable(true, client.id, bufnr, {autotrigger = true})
+    -- vim.lsp.completion.enable(true, client.id, bufnr, {autotrigger = true})
 end
 
 --local lspconfig = require('lspconfig')
