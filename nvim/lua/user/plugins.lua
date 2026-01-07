@@ -5,6 +5,16 @@ vim.cmd.packadd("cfilter")
 return {
     { 'williamboman/mason.nvim', opts = {}}, --mason (lsps)
     -- 'williamboman/mason-lspconfig.nvim', -- lspconfig for mason (lsps)
+    {
+        "mason-org/mason-lspconfig.nvim",
+        opts = {
+            ensure_installed = { "lua_ls@3.5.6"},
+        },
+        dependencies = {
+            { "mason-org/mason.nvim", opts = {} },
+            "neovim/nvim-lspconfig",
+        }
+    },
     {"nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate"},
     'nvim-lua/popup.nvim', --popup api
     'nvim-lua/plenary.nvim', --lua functions for vim
